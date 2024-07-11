@@ -15,7 +15,15 @@ function findMatches(wordToMatch, places) {
 
 function displayMatches() {
     const matchArray = findMatches(this.value, places);
-    console.log(matchArray);
+    const html = matchArray.map(place => {
+        return `
+            <li>
+                <span class="name">${place.city}, ${place.state}<span>
+                <span class="population">${place.population}<span>
+            </li>
+        `;
+    }).join('');
+    suggestions.innerHTML = html;
 }
 
 const searchInput = document.querySelector('.search');
